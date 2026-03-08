@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic@s SheinUNE - Moda con Esencia</title>
+    <meta name="description" content="Chic@s SheinUNE - Tu estilo, tus reglas, tu momento. Moda con esencia en Cuba.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        /* ============================================
+           VARIABLES PREMIUM
+           ============================================ */
+        :root {
+            --rose: #ff6b9d;
+            --rose-dark: #e91e63;
+            --violet: #8b5cf6;
+            --violet-dark: #7c3aed;
+            --gold: #fbbf24;
+            --gold-dark: #f59e0b;
+            --dark: #0f0f1a;
+            --dark-light: #1a1a2e;
+            --gray: #6b7280;
+            --gray-light: #9ca3af;
+            --white: #ffffff;
+            --cream: #fef7f0;
+            
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-rose: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            --gradient-violet: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --shadow-glow: 0 0 60px rgba(255,107,157,0.3);
+            --shadow-gold: 0 0 60px rgba(251,191,36,0.3);
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           ANIMACIONES
+           ============================================ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,107,157,0.4); }
+            50% { box-shadow: 0 0 40px rgba(255,107,157,0.7); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bounce-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes neon-glow {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(255, 107, 157, 0.5),
+                             0 0 20px rgba(139, 92, 246, 0.4),
+                             0 0 30px rgba(251, 191, 36, 0.3);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+                             0 0 40px rgba(139, 92, 246, 0.6),
+                             0 0 60px rgba(251, 191, 36, 0.5);
+            }
+        }
+
+        /* ============================================
+           HEADER ELEGANTE Y MEJORADO
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s var(--ease-out);
+            background: rgba(15, 15, 26, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .header.scrolled {
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 1.2rem 4rem;
+            border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: relative;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+                         0 0 40px rgba(255, 107, 157, 0.3);
+            animation: neon-glow 3s ease-in-out infinite;
+            filter: brightness(1.1);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(139, 92, 246, 0.2), rgba(251, 191, 36, 0.15));
+            border-radius: 8px;
+            z-index: -1;
+            filter: blur(12px);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            padding: 0.8rem 1.2rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b9d, #8b5cf6, #fbbf24);
+            transition: width 0.3s var(--ease-out);
+        }
+
+        .nav-link:hover {
+            color: #ff6b9d;
+            background: rgba(255, 107, 157, 0.15);
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* ============================================
+           HERO CON IMAGEN PRINCIPAL
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #fef7f0 0%, #fff 50%, #fef7f0 100%);
+        }
+
+        .hero-bg-shapes {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            top: -10%;
+            right: -5%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            bottom: -10%;
+            left: -5%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            top: 40%;
+            left: 10%;
+            animation: float 12s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,107,157,0.2);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--rose);
+            margin-bottom: 2rem;
+            animation: fade-up 0.6s var(--ease-out) forwards;
+            opacity: 0;
+        }
+
+        .hero-badge i {
+            font-size: 1rem;
+            animation: bounce-soft 2s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-title .highlight {
+            background: var(--gradient-rose);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-rose);
+            color: white;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255,107,157,0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--rose);
+            color: var(--rose);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        /* ============================================
+           HERO PRINCIPAL CON IMAGEN
+           ============================================ */
+        .hero-main-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: scale-in 0.8s var(--ease-out);
+            margin-bottom: 3rem;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+        }
+
+        /* ============================================
+           FEATURES / BENEFICIOS
+           ============================================ */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 28px;
+            background: inherit;
+            opacity: 0.3;
+            filter: blur(15px);
+        }
+
+        .feature-icon i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon.premium {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+        }
+
+        .feature-icon.delivery {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .feature-icon.service {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+
+        .feature-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .feature-text {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           PRODUCTS SECTION
+           ============================================ */
+        .products {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #fef7f0 0%, white 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fade-up 0.6s var(--ease-out);
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-rose);
+            color: white;
+            border-color: var(--rose);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease-out);
+            opacity: 0;
+            animation: fade-up 0.6s var(--ease-out) forwards;
+            border: 2px solid rgba(255, 107, 157, 0.15);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fef7f0, #f5f5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+            padding: 15px;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-rose);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--rose);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-rose);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #25d366, #20ba5a);
+            color: white;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fef7f0, white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        .contact-avatar.ernesto {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+        }
+
+        .contact-avatar.gladys {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .contact-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-phone {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-hours {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .contact-hours i {
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-rose);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s var(--ease-out);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll.stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .animate-on-scroll.stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header.scrolled {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav {
+                gap: 1.5rem;
+            }
+
+            .nav-link {
+                font-size: 0.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .product-image-wrapper {
+                height: 200px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .hero-buttons {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <a href="#" class="logo">Chic@s SheinUNE</a>
+        <nav class="nav">
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#productos" class="nav-link">Productos</a>
+            <a href="#contacto" class="nav-link">Contactos</a>
+        </nav>
+    </header>
+
+    <!-- Hero Principal con Nueva Imagen -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <img src="hero-new.jpg" alt="Chic@s SheinUNE - Tienda Física" class="hero-main-image">
+            
+            <div class="hero-badge">
+                <i class="ph ph-sparkle"></i>
+                <span>Estilo que te define</span>
+            </div>
+            
+            <h1 class="hero-title">
+                Chic@s <span class="highlight">SheinUNE</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Tu estilo, tu esencia, tu momento. Descubre las últimas tendencias en moda 
+                con precios irresistibles. Prendas seleccionadas especialmente para realzar tu belleza única.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary">
+                    <i class="ph ph-shopping-bag"></i>
+                    Ver Catálogo
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="ph ph-whatsapp-logo"></i>
+                    Contactar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon premium">
+                    <i class="ph ph-sparkle"></i>
+                </div>
+                <h3 class="feature-title">Calidad Premium</h3>
+                <p class="feature-text">Prendas seleccionadas con los más altos estándares de calidad para tu satisfacción.</p>
+            </div>
+            
+            <div class="feature-card animate-on-scroll stagger-1">
+                <div class="feature-icon delivery">
+                    <i class="ph ph-truck"></i>
+                </div>
+                <h3 class="feature-title">Entrega Rápida</h3>
+                <p class="feature-text">Recibe tus pedidos en el menor tiempo posible, directo a tu ubicación.</p>
+            </div>
+            
+            <div class="feature-card animate-on-scroll stagger-2">
+                <div class="feature-icon service">
+                    <i class="ph ph-heart"></i>
+                </div>
+                <h3 class="feature-title">Atención Personalizada</h3>
+                <p class="feature-text">Te ayudamos a encontrar el estilo perfecto que se adapte a tu personalidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="productos">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label">
+                <i class="ph ph-dress"></i>
+                Nuestra Colección
+            </div>
+            <h2 class="section-title">Productos Destacados</h2>
+            <p class="section-subtitle">Descubre nuestras prendas más populares</p>
+        </div>
+        
+        <div class="filters animate-on-scroll">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="Vestidos">Vestidos</button>
+            <button class="filter-btn" data-filter="Blusas">Blusas</button>
+            <button class="filter-btn" data-filter="Pantalones">Pantalones</button>
+            <button class="filter-btn" data-filter="Abrigos">Abrigos</button>
+            <button class="filter-btn" data-filter="Camisas">Camisas</button>
+            <button class="filter-btn" data-filter="Accesorios">Accesorios</button>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products loaded via JS -->
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contacto">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label">
+                <i class="ph ph-chat-circle-dots"></i>
+                Contacto
+            </div>
+            <h2 class="section-title">Hablemos</h2>
+            <p class="section-subtitle">Estamos aquí para ayudarte</p>
+        </div>
+        
+        <div class="contact-grid animate-on-scroll">
+            <div class="contact-card">
+                <div class="contact-avatar ernesto">
+                    <i class="ph ph-user"></i>
+                </div>
+                <h3 class="contact-name">Ernesto</h3>
+                <p class="contact-phone">+53 58472238</p>
+                <a href="https://wa.me/5358472238" target="_blank" class="btn-whatsapp">
+                    <i class="ph ph-whatsapp-logo"></i>
+                    WhatsApp
+                </a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-avatar gladys">
+                    <i class="ph ph-user"></i>
+                </div>
+                <h3 class="contact-name">Gladys</h3>
+                <p class="contact-phone">+53 53848949</p>
+                <a href="https://wa.me/5353848949" target="_blank" class="btn-whatsapp">
+                    <i class="ph ph-whatsapp-logo"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <div class="contact-hours animate-on-scroll">
+            <i class="ph ph-clock"></i>
+            <span>Lunes a Sábado, 9:00 AM - 6:00 PM</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">Chic@s SheinUNE</div>
+        <p class="footer-text">© 2026 Chic@s SheinUNE - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+
+        // ============================================
+        // PRODUCTOS - 18 PRODUCTOS CON IMÁGENES
+        // ============================================
+        const PRODUCTS = [
+            { id: 1, name: "Licras Cortas (Mujer)", price: 500, category: "Pantalones", isNew: true, image: "1000875779.png" },
+            { id: 2, name: "Medias Cortas (Hombre)", price: 180, category: "Accesorios", isNew: false, image: "1000876016.jpg" },
+            { id: 3, name: "Ropa Interior Femenina", price: 350, category: "Accesorios", isNew: false, image: "1000875780.png" },
+            { id: 4, name: "Ropa Interior Masculina", price: 350, category: "Accesorios", isNew: false, image: "1000876133.jpg" },
+            { id: 5, name: "Vestidos Románticos", price: 1500, category: "Vestidos", isNew: true, image: "1000876005.png" },
+            { id: 6, name: "Camisetas (Hombre)", price: 750, category: "Camisas", isNew: false, image: "1000876007.png" },
+            { id: 7, name: "Vestidos de Cóctel - Girasoles", price: 1500, category: "Vestidos", isNew: true, image: "1000876001.png" },
+            { id: 8, name: "Vestidos de Cóctel - Rosa", price: 1500, category: "Vestidos", isNew: true, image: "1000876003.png" },
+            { id: 9, name: "Vestidos de Cóctel - Blanco", price: 1500, category: "Vestidos", isNew: true, image: "1000876004.png" },
+            { id: 10, name: "Pantalones Soirée (Mujer)", price: 2500, category: "Pantalones", isNew: true, image: "1000875813.png" },
+            { id: 11, name: "Leggings Cropped (Mujer)", price: 750, category: "Pantalones", isNew: false, image: "1000874311.png" },
+            { id: 12, name: "Short de Felpa (Hombre)", price: 1500, category: "Pantalones", isNew: false, image: "1000874315.png" },
+            { id: 13, name: "Tapasoles (Mujer)", price: 1300, category: "Blusas", isNew: true, image: "1000874313.png" },
+            { id: 14, name: "Monos Deportivos (Hombre)", price: 2000, category: "Pantalones", isNew: true, image: "1000874316.png" },
+            { id: 15, name: "Abrigos Sastre (Hombre)", price: 1000, category: "Abrigos", isNew: false, image: "1000874310.png" },
+            { id: 16, name: "Vestidos de Cóctel - Rayas", price: 1500, category: "Vestidos", isNew: true, image: "1000875782.png" },
+            { id: 17, name: "Enguatadas (Mujer)", price: 1550, category: "Abrigos", isNew: true, image: "1000875784.png" },
+            { id: 18, name: "Vestidos de Tela Fina", price: 1300, category: "Vestidos", isNew: true, image: "1000875785.png" }
+        ];
+
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('es-CU') + ' CUP';
+        }
+
+        function generateWhatsAppLink(number, productName) {
+            const message = encodeURIComponent(`Hola, me interesa: ${productName}`);
+            return `https://wa.me/${number}?text=${message}`;
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            const filteredProducts = filter === 'all' 
+                ? PRODUCTS 
+                : PRODUCTS.filter(p => p.category === filter);
+            
+            filteredProducts.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card animate-on-scroll';
+                card.style.transitionDelay = `${index * 0.05}s`;
+                
+                const whatsappLink = generateWhatsAppLink('5358472238', product.name);
+                
+                card.innerHTML = `
+                    <div class="product-image-wrapper">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                        ${product.isNew ? '<span class="product-badge">Nuevo</span>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">${product.category}</p>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">${formatPrice(product.price)}</p>
+                        <a href="${whatsappLink}" target="_blank" class="btn-whatsapp">
+                            <i class="ph ph-whatsapp-logo"></i>
+                            Consultar por WhatsApp
+                        </a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            // Re-trigger animations for new elements
+            setTimeout(() => {
+                observeElements();
+            }, 100);
+        }
+
+        function initFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderProducts(btn.dataset.filter);
+                });
+            });
+        }
+
+        // Header scroll effect
+        function initHeader() {
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Scroll animations
+        function observeElements() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            initFilters();
+            initHeader();
+            observeElements();
+        });
+    </script>
+</body>
+</html>
